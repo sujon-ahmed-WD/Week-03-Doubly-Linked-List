@@ -23,10 +23,6 @@ void Doubly_list_head(Node*&head,int val)
 
 }
 
-
-
-
-
 void f_p(Node*head)
 {
     Node*temp=head;
