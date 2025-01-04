@@ -14,35 +14,22 @@ public:
     }
 };
 
-void delete_head(Node *&head, Node *&tail)
+void insert_tail(Node *head, int idx, int val)
 {
-    Node *deletenode = head;
-    head = head->next;
-    delete deletenode;
-    if (head == NULL)
+    Node *newnode = new Node(val);
+    Node *temp = head;
+    for (int i = 0; i < idx; i++)
     {
-        tail = NULL;
-        return;
+        temp = temp->next;
     }
-    head->prev = NULL;
-}
-
-void delete_head(Node*&head,Node*&tail)
-{
-    Node*dletenode=head;
-    head=head->next;
-    if(head==NULL)
+    newnode->next = temp->next;
+    if (temp->next != NULL)
     {
-        head=NULL;
-        tail==NULL;
-        return;
+        temp->next->prev = newnode;
     }
-    head->prev=NULL;
+    temp->next = newnode;
+    newnode->prev = temp;
 }
-
-
-
-
 
 void f_p(Node *head)
 {
@@ -74,7 +61,7 @@ int main()
     a->next = tail;
     tail->prev = a;
 
-    delete_head(head, tail);
+    insert_tail(head, 2, 30);
     f_p(head);
     return 0;
 }
